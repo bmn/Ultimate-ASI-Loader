@@ -1,5 +1,1 @@
-#define IDR_WNDMODE    103
-#define IDR_WNDWINI    104
 
-IDR_WNDMODE RCDATA "wndmode.dll"
-IDR_WNDWINI RCDATA "wndmode.ini"
