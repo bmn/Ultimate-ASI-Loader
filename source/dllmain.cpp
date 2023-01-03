@@ -1,6 +1,7 @@
 #include "dllmain.h"
 #include "exception.hpp"
 #include <initguid.h>
+#include <Windows.h>
 
 #if !X64
 #include <d3d8to9\source\d3d8to9.hpp>
@@ -1202,11 +1203,11 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID /*lpReserved*/)
     if (reason == DLL_PROCESS_ATTACH)
     {
         char exe_path[MAX_PATH];
-        GetModuleFileName(NULL, exe_path, MAX_PATH);
+        GetModuleFileNameA(NULL, exe_path, MAX_PATH);
 
-        char* exe_name = PathFindFileName(exe_path);
+        char* exe_name = PathFindFileNameA(exe_path);
         
-        if ((stricmp(exe_name, "mgsi.exe") != 0) && (stricmp(exe_name, "mgsvr.exe") != 0))
+        if ((_stricmp(exe_name, "mgsi.exe") != 0) && (_stricmp(exe_name, "mgsvr.exe") != 0))
         {
             return FALSE;
         }
