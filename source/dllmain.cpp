@@ -2,6 +2,7 @@
 #include "exception.hpp"
 #include <initguid.h>
 #include <Windows.h>
+#include <shlwapi.h>
 
 #if !X64
 #include <d3d8to9\source\d3d8to9.hpp>
