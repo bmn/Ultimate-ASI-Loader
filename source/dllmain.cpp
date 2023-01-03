@@ -1203,12 +1203,12 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID /*lpReserved*/)
 {
     if (reason == DLL_PROCESS_ATTACH)
     {
-        char exe_path[MAX_PATH];
-        GetModuleFileName(NULL, exe_path, MAX_PATH);
+        std::wstring exe_path = GetModuleFileNameW(NULL);
 
-        char* exe_name = PathFindFileName(exe_path);
+        std::wstring exe_name = PathFindFileNameW(exe_path);
         
-        if ((_stricmp(exe_name, "mgsi.exe") != 0) && (_stricmp(exe_name, "mgsvr.exe") != 0))
+        //if ((_stricmp(exe_name, "mgsi.exe") != 0) && (_stricmp(exe_name, "mgsvr.exe") != 0))
+        if ((exe_name != L"mgsi.exe") && (exe_name != L"mgsvr.exe"))
         {
             return FALSE;
         }
