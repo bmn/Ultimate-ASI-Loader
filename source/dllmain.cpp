@@ -1201,6 +1201,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID /*lpReserved*/)
 {
     if (reason == DLL_PROCESS_ATTACH)
     {
+        char exe_path[MAX_PATH];
+        GetModuleFileName(NULL, exe_path, MAX_PATH);
+
+        char* exe_name = PathFindFileName(exe_path);
+        
+        if ((stricmp(exe_name, "mgsi.exe") != 0) && (stricmp(exe_name, "mgsvr.exe") != 0))
+        {
+            return FALSE;
+        }
+        
         hm = hModule;
         Init();
     }
