@@ -1203,7 +1203,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID /*lpReserved*/)
 {
     if (reason == DLL_PROCESS_ATTACH)
     {
-        LPCWSTR exe_path = GetModuleFileNameW(NULL);
+        LPWSTR exe_path = GetModuleFileNameW(NULL);
 
         std::wstring exe_name = PathFindFileNameW(exe_path);
         
